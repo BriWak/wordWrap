@@ -2,21 +2,14 @@
 object Wrapper {
 
   def wrap(textToWrap: String, col: Int): String = {
-    val (first, second) = textToWrap.splitAt(col)
-    val spaceLocation: Int = first.lastIndexOf(' ')
+    val (firstPart, secondPart) = textToWrap.splitAt(col)
+    val spaceLocation: Int = firstPart.lastIndexOf(' ')
+    val (colOne, colTwo) = if (firstPart.contains(' ')) textToWrap.splitAt(spaceLocation) else (firstPart, secondPart)
 
-    val (colOne, colTwo) = if (first.contains(' ')) {
-        textToWrap.splitAt(spaceLocation)
-      } else {
-      (first, second)
-    }
-
-    if (textToWrap.length <= col) {
+    if (textToWrap.length <= col)
       textToWrap
-    } else {
+    else
       s"${colOne.trim}\n${wrap(colTwo.trim, col)}"
-    }
   }
-
 
 }
