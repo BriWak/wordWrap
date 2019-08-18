@@ -23,7 +23,7 @@ class WrapperSpec extends WordSpec with MustMatchers {
       Wrapper.wrap("word word", 5) mustEqual "word\nword"
     }
 
-    "return two words wrapped at the space when there is a space after the column limit" in {
+    "return two words wrapped at the space when there is a space before the column limit" in {
       Wrapper.wrap("word word", 6) mustEqual "word\nword"
     }
 
